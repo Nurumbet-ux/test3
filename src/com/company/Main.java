@@ -130,8 +130,7 @@ public class Main {
 
     public static void medicHealing() {
         for (int i = 0; i < heroesHealth.length; i++) {
-
-            if (heroesHealth[i] > 0 && counter < 1 && heroesHealth[i] != medic) {
+            if (heroesHealth[i] > 0 && counter < 1 && heroesHealth[i] != heroesHealth[3]) {
                 if (heroesHealth[i] >= 1 && heroesHealth[i] < 100) {
                     Random r = new Random();
                     int randomHealing = r.nextInt(51) + 50;
