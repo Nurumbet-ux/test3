@@ -7,9 +7,9 @@ public class Main {
     public static int bossHealth = 1800;
     public static int bossDamage = 50;
     public static String bossDefenceType = "";
-    public static int[] heroesHealth = {270, 260, 250, 200, 600,200,300,200};
-    public static String[] heroes = {"Phisical atacker", "Magical atacker", "Kinetical atacker", "Medic", "Golem","Lucky","Berserk","Thor"};
-    public static int[] heroesDamages = {20, 25, 15,5,5,10};
+    public static int[] heroesHealth = {270, 260, 250, 200, 600, 200, 300, 200};
+    public static String[] heroes = {"Phisical atacker", "Magical atacker", "Kinetical atacker", "Medic", "Golem", "Lucky", "Berserk", "Thor"};
+    public static int[] heroesDamages = {20, 25, 15, 5, 5, 10};
     public static String[] heroesAttackType = {"Physical",
             "Magical", "Kinetic"};
     public static int roundCounter = 0;
@@ -46,13 +46,13 @@ public class Main {
         roundCounter++;
         changeBossDefence();
         bossAngryState();
-        if(!Thor()) {
+        if (!Thor()) {
             if (heroesHealth[4] > 170) {
                 takingHitGolem();
             } else {
                 bossHits();
             }
-        }else {
+        } else {
             System.out.println("The boss is paralyzed!!!");
             medicHealing();
         }
@@ -66,9 +66,9 @@ public class Main {
     public static void heroesHit() {
         for (int i = 0; i < heroesAttackType.length; i++) {
             if (bossHealth > 0 && heroesHealth[i] > 0) {
-                if (heroesDamages[i] == heroesDamages[5]){
-                    bossHealth = bossHealth - (heroesDamages[i] +damageTakerForBerserk);
-                }else {
+                if (heroesDamages[i] == heroesDamages[5]) {
+                    bossHealth = bossHealth - (heroesDamages[i] + damageTakerForBerserk);
+                } else {
                     if (heroesAttackType[i].equals(bossDefenceType)) {
                         Random r = new Random();
                         int coeff = r.nextInt(7) + 2; // 2,3,4,5,6,7,8
@@ -93,21 +93,19 @@ public class Main {
         }
 
 
-
-
     }
 
     public static void bossHits() {
         for (int i = 0; i < heroesHealth.length; i++) {
             if (heroesHealth[i] > 0 && bossHealth > 0) {
-                if (heroesHealth[i]==heroesHealth[6]){
-                    if (heroesHealth[i]- (bossDamage/5)*2>=0){
-                        heroesHealth[i]=0;
-                    }else {
+                if (heroesHealth[i] == heroesHealth[6]) {
+                    if (heroesHealth[i] - (bossDamage / 5) * 2 >= 0) {
+                        heroesHealth[i] = 0;
+                    } else {
                         heroesHealth[i] = heroesHealth[i] - (bossDamage / 5) * 2;
                         damageTakerForBerserk = (bossDamage / 5) * 3;
                     }
-                }else {
+                } else {
 
                     if (heroesHealth[i] == heroesHealth[5]) {
                         if (isHeLucky()) {
@@ -167,7 +165,7 @@ public class Main {
 
     public static void medicHealing() {
         for (int i = 0; i < heroesHealth.length; i++) {
-            if (heroesHealth[i] > 0 && counter < 1 && heroesHealth[i] != heroesHealth[3] && heroesHealth[3]>0) {
+            if (heroesHealth[i] > 0 && counter < 1 && heroesHealth[i] != heroesHealth[3] && heroesHealth[3] > 0) {
                 if (heroesHealth[i] >= 1 && heroesHealth[i] < 100) {
                     Random r = new Random();
                     int randomHealing = r.nextInt(51) + 50;
@@ -182,17 +180,17 @@ public class Main {
 
     public static void takingHitGolem() {
         for (int i = 0; i < heroesHealth.length; i++) {
-            if (heroesHealth[i]>0 && heroesHealth[4] >0 && bossHealth >0) {
+            if (heroesHealth[i] > 0 && heroesHealth[4] > 0 && bossHealth > 0) {
 
-                if (heroesHealth[i]==heroesHealth[6]){
-                    if (heroesHealth[i] - (bossDamage/5)*2 >=0){
-                        heroesHealth[i] =0;
+                if (heroesHealth[i] == heroesHealth[6]) {
+                    if (heroesHealth[i] - (bossDamage / 5) * 2 >= 0) {
+                        heroesHealth[i] = 0;
 
-                    }else {
+                    } else {
                         heroesHealth[i] = heroesHealth[i] - (bossDamage / 5) * 2;
                         damageTakerForBerserk = (bossDamage / 5) * 3;
                     }
-                }else {
+                } else {
 
                     int a;
                     int b;
@@ -211,6 +209,7 @@ public class Main {
             }
         }
     }
+
     public static boolean isHeLucky() {
         Random r = new Random();
         int temp = r.nextInt(2);
@@ -221,12 +220,13 @@ public class Main {
             return false;
         }
     }
-    public static boolean Thor(){
+
+    public static boolean Thor() {
         Random r = new Random();
         int temp = r.nextInt(2);
-        if (temp == 1){
+        if (temp == 1) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
